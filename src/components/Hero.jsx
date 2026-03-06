@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const images = [
-    "public/images/Property 1=Frame 1.png",
-    "public/images/Property 1=Frame 2.png",
-    "public/images/Property 1=Frame 3.png",
+    "images/Property 1=Frame 1.png",
+    "images/Property 1=Frame 2.png",
+    "images/Property 1=Frame 3.png",
 ]
 
 const Hero = () => {
