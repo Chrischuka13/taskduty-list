@@ -18,7 +18,7 @@ const NewTasks = ({addTask}) => {
 
 
     addTask(newTask);
-    navigate("/all-tasks");
+    navigate("/profile/all-tasks");
   };
 
   

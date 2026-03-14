@@ -1,10 +1,16 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import './App.css'
 import Hero from './components/Hero'
 import AllTasks from './pages/AllTasks'
 import NewTasks from './pages/NewTasks'
 import EditTasks from './pages/EditTasks'
+import Login from './pages/Login'
+import SignUp from './pages/SignUp'
+import ProtectedRoute from './components/ProtectedRoute'
+import AuthRedirect from './components/AuthRedirect'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import NavBar from './components/NavBar'
+import { AuthContext } from './context/AuthContext'
 
 
 
@@ -34,20 +40,21 @@ function App() {
     );
   };
 
+   
+
+
+
 
   return (
     <>
       <Routes>
-        <Route path='/' element={
-        <>
-          <Hero/>
-        </>
-
-        }/>
-
-        <Route path='/all-tasks' element={<AllTasks tasks={tasks} deleteTask={deleteTask}/>}/>
-        <Route path='/new-tasks' element={<NewTasks addTask={addTask}/>}/>
-        <Route path='/edit-task/:id' element={<EditTasks tasks={tasks} updateTask={updateTask}/>}/>
+        
+        <Route path='/profile' element={<ProtectedRoute><Hero/></ProtectedRoute>}/>
+        <Route path='/signup' element={<AuthRedirect><SignUp/></AuthRedirect>}/>
+        <Route path='/login' element={<AuthRedirect><Login/></AuthRedirect>}/>
+        <Route path='/profile/all-tasks' element={<ProtectedRoute><AllTasks tasks={tasks} deleteTask={deleteTask}/></ProtectedRoute>}/>
+        <Route path='/profile/new-tasks' element={<ProtectedRoute><NewTasks addTask={addTask}/></ProtectedRoute>}/>
+        <Route path='/profile/edit-task/:id' element={<ProtectedRoute><EditTasks tasks={tasks} updateTask={updateTask}/></ProtectedRoute>}/>
 
       </Routes>
     </>

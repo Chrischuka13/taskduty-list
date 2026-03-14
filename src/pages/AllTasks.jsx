@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+
 import { Link } from 'react-router-dom'
 
 const AllTasks = ({tasks, deleteTask}) => {
@@ -8,7 +9,7 @@ const AllTasks = ({tasks, deleteTask}) => {
       <section className='w-10/12 container mx-auto py-12'>
         <div className="flex justify-between items-center mb-6">
             <h1 className="text-3xl font-bold">My Tasks</h1>
-            <Link to="/new-tasks" className="text-purple-500 font-semibold">+ Add New Task</Link>
+            <Link to="/profile/new-tasks" className="text-purple-500 font-semibold">+ Add New Task</Link>
         </div>
 
         {tasks.map((task) => (
