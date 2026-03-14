@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 import './App.css'
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/700.css";
 import Hero from './components/Hero'
 import AllTasks from './pages/AllTasks'
 import NewTasks from './pages/NewTasks'

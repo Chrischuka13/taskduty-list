@@ -21,7 +21,7 @@ const NavBar = () => {
                     <div>
                         {user && (
                             <>
-                                <div>{user.email}</div>
+                                <div className='hidden lg:block'>{user.email}</div>
                             </>
                         )}
                     </div>

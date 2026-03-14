@@ -1,13 +1,12 @@
 @import "tailwindcss";
 
-*{
+/* *{
      font-family: "Signika Negative", sans-serif;
-}
+} */
 
-@import "tailwindcss";
 
-*{
-  font-family: poppins;
+body {
+  font-family: "Roboto", sans-serif;
 }
 
 input{
