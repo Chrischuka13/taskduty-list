@@ -19,7 +19,11 @@ const NavBar = () => {
                         <a href="/profile"><img src="/images/Group 2.png" alt="" className='w-30'/></a>
                     </div>
                     <div>
-                        {user.email}
+                        {user && (
+                            <>
+                                <div>{user.email}</div>
+                            </>
+                        )}
                     </div>
                     <div className='flex items-center justify-center gap-4 text-[12px] md:text-[18px]'>
                         {!user && (
