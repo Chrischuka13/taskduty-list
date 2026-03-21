@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import NavBar from './NavBar'
 import { AuthContext } from '../context/AuthContext'
 import api from '../api/axios'
 
@@ -29,7 +28,7 @@ const Hero = () => {
   useEffect(()=>{
     const fetchProfile = async () => {
       try {
-        const response = await api.get("/profile", 
+        const response = await api.get("/auth/profile", 
           {headers: getAuthHeaders()}
         )
         setData(response.data.user);

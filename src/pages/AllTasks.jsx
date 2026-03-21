@@ -1,15 +1,62 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
+import api from '../api/axios'
+import SearchBar from '../components/SearchBar'
+import ListTask from '../components/ListTask'
 
-import { Link } from 'react-router-dom'
+
 
 const AllTasks = ({tasks, deleteTask}) => {
+  const [query, setQuery] = useState("");
+  const [tag, setTag] = useState("");
+  const [task, setTask] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+    // Build query string
+    const buildQuery = () => {
+    const params = new URLSearchParams();
+
+    if (query) params.append("query", query);
+    if (tag) params.append("tags", tag);
+
+    return params.toString();
+  };
+
+    const fetchTasks = async() => {
+      setLoading(true);
+    try {
+      const queryString = buildQuery();
+      const res = await api.get(
+        `/task/profile/tasks/search?${queryString}`
+      );
+
+      setTask(res.data);
+    } catch (err) {
+      console.error(err.message);
+    } finally {
+      setLoading(false);
+    }
+  }
+    // 🔥 Debounced search
+  useEffect(() => {
+    const delay = setTimeout(() => {
+      fetchTasks();
+    }, 400);
+
+    return () => clearTimeout(delay);
+  }, [query, tag]);
 
   return (
     <main>
       <section className='w-10/12 container mx-auto py-12'>
         <div className="flex justify-between items-center mb-6">
-            <h1 className="text-3xl font-bold">My Tasks</h1>
-            <Link to="/profile/new-tasks" className="text-purple-500 font-semibold">+ Add New Task</Link>
+          <h1 className="text-3xl font-bold">My Tasks</h1>
+          <Link to="/profile/new-tasks" className="text-purple-500 font-semibold">+ Add New Task</Link>
+        </div>
+
+        <div className='mb-8'>
+          <SearchBar query={query} setQuery={setQuery} tag={tag} setTag={setTag}/>
+          {loading ? (<p>Loading...</p>) : (<ListTask task={task} />)}
         </div>
 
         {tasks.map((task) => (

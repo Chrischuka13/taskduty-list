@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import api from '../api/axios'
 
 const SignUp = () => {
     const navigate = useNavigate()
@@ -20,7 +21,7 @@ const SignUp = () => {
         try {
             setIsLoading(true)
             setError("")
-            const response = await api.post("/signup", {username, email, password})
+            const response = await api.post("/auth/signup", {username, email, password})
             console.log(response.data);      
             setSuccess("Account Created Successfully")
             setTimeout(()=> navigate("/login"), 2000)
