@@ -46,8 +46,6 @@ const Hero = () => {
       fetchProfile()
     }
   }, [user])
-
-  console.log(user);
   
 
   if (loading) return <p>Loading profile...</p>
