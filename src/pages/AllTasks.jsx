@@ -64,7 +64,7 @@ const AllTasks = ({tasks, deleteTask}) => {
                 <div className='flex justify-between items-center'>
                     <p>{task.tag}</p>
                     <div className='flex gap-3'>
-                        <Link to={`/edit-task/${task.id}`} className="flex gap-1 border bg-purple-500 text-white px-4 py-2 rounded-md"><img src="images/clarity_note-edit-line.png" alt="" /> Edit</Link>
+                        <Link to={`/profile/edit-task/${task.id}`} className="flex gap-1 border bg-purple-500 text-white px-4 py-2 rounded-md"><img src="images/clarity_note-edit-line.png" alt="" /> Edit</Link>
                         <div onClick={() => deleteTask(task.id)} className="flex gap-1 border border-purple-500 text-purple-500 px-4 py-2 rounded-md cursor-pointer"><img src="images/fluent_delete-24-regular.png" alt="" />Delete</div>
                     </div>
                 </div>
