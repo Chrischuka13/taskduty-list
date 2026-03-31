@@ -13,7 +13,7 @@ const EditTasks = ({tasks, updateTask}) => {
 
     const handleSubmit = () => {
     updateTask(Number(id), { title, description, tag });
-    navigate("/");
+    navigate("/profile/all-tasks");
   };
 
 
